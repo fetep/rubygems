@@ -323,7 +323,7 @@ class Gem::Package::TarWriter
 
       loop do
         nxt = parts.pop
-        break if newname.bytesize + 1 + nxt.bytesize > 100
+        break if newname.bytesize + 1 + nxt.bytesize >= 100
         newname = nxt + "/" + newname
       end
 

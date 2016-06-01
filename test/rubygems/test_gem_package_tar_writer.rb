@@ -232,6 +232,9 @@ class TestGemPackageTarWriter < Gem::Package::TarTestCase
   end
 
   def test_split_name_too_long_name
+    name = File.join '/a', 'b' * 98
+    assert_equal ['b' * 98, '/a'], @tar_writer.split_name(name)
+
     name = File.join 'a', 'b' * 100
     assert_equal ['b' * 100, 'a'], @tar_writer.split_name(name)
 
